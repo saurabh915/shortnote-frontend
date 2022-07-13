@@ -10,11 +10,11 @@ const Signup = (props) => {
      //destructuring means assigning  array or objects elements to particular variables 
 const {name,email,password}= credentials;
          // TODO: API Call
-         const response = await fetch(`http://localhost:5000/api/auth/createuser`, {
+         const response = await fetch(`https://inotepage.herokuapp.com/api/auth/createuser`, {
            method: 'POST',
            headers: {
              "Content-Type": "application/json",
-            
+          
            },
            body: JSON.stringify(
 
