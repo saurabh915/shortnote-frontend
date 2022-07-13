@@ -83,9 +83,9 @@ const Notes = (props) => {
                 </div>
                 <div className="col-auto">
                   <label htmlFor="description" className="visually-hidden">description</label>
-                  <input type="text" className="form-control" value={note.edescription} onChange={onChange} id="edescription" name='edescription' placeholder="Password" />
+                  <input type="text" className="form-control" value={note.edescription} onChange={onChange} id="edescription" name='edescription' placeholder="Description" />
                   <label htmlFor="tag" className="visually-hidden">Tag</label>
-                  <input type="text" className="form-control" value={note.etag} onChange={onChange} id="etag" name='etag' placeholder="Password" />
+                  <input type="text" className="form-control" value={note.etag} onChange={onChange} id="etag" name='etag' placeholder="#tag" />
                 </div>
 
               </form>

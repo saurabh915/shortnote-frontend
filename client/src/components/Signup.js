@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import './ccss/signup.css'
 const Signup = (props) => {
   let navigate = useNavigate();
   const [credentials, setCredentials] = useState({ name:"" ,email: "", password: "",cpassword:""})
@@ -46,7 +47,9 @@ console.log(json.authToken);
    }
  
   return (
+
     <div className="container">
+      <h2 className='header'>PLEASE ENTER YOUR SIGNUP DETAILS</h2>
         <form onSubmit={handleSubmit} >
         <div className="mb-3 row">
 <label htmlFor="Password" className="col-sm-2 col-form-label">Name</label>
@@ -74,7 +77,7 @@ console.log(json.authToken);
 <input type="password" className="form-control-plaintext" name = "cpassword" id='cpassword'  value={credentials.cpassword} onChange={onChange}/>
 </div>
 </div>
-<button type="submit" className='btn btn-primary' >Submit </button>
+<button type="submit" className='btn btn-primary sbutt' >Submit </button>
   </form>
     </div>
   )

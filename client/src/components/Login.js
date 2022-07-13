@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-
+import './ccss/signup.css'
 const Login = (props) => {
     let navigate = useNavigate();
      const [credentials, setCredentials] = useState({ email: "", password: ""})
@@ -41,7 +41,8 @@ else{
       }
     
   return (
-    <div>
+    <div className='container'>
+         <h2 className='header'>PLEASE ENTER YOUR LOGIN DETAILS</h2>
        <form onSubmit={handleSubmit} >
 
 <div className="mb-3 row">
@@ -56,7 +57,7 @@ else{
 <input type="password" className="form-control" id="Password"  name = "password" value={credentials.password}onChange={onChange} />
 </div>
 </div>
-<button type="submit" className='btn btn-primary' >Submit </button>
+<button type="submit" className='btn btn-primary sbutt' >Submit </button>
   </form>
     </div>
   )
