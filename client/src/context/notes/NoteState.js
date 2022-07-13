@@ -9,7 +9,7 @@ const NoteState = (props) => {
   //     "name":"saurabh",
   //     "class":"sb"
   // }
-  const host = "http://localhost:5000"
+  const host = "https://inotepage.herokuapp.com"
 
   const notesinitial = [
     
