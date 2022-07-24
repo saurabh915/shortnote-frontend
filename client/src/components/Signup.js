@@ -52,7 +52,7 @@ console.log(json.authToken);
       <h2 className='header'>PLEASE ENTER YOUR SIGNUP DETAILS</h2>
         <form onSubmit={handleSubmit} >
         <div className="mb-3 row">
-<label htmlFor="Password" className="col-sm-2 col-form-label">Name</label>
+<label htmlFor='text' className="col-sm-2 col-form-label">Name</label>
 <div className="col-sm-10">
 <input type="text" className="form-control" id="name"  name = "name"  value={credentials.name} onChange={onChange}minLength={5} required />
 </div>

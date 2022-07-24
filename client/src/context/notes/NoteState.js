@@ -117,7 +117,7 @@ console.log(json);
   const editNote = async (id, title, description, tag) => {
     //For API call
     const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
-      method: 'PATCH',
+      method: 'PUT',
       headers: {
         "Content-Type": "application/json",
         "auth-token": localStorage.getItem('token')
