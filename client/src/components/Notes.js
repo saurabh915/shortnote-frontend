@@ -6,7 +6,7 @@ import {useNavigate} from 'react-router-dom';
 
 import noteContext from "../context/notes/noteContext";
 import AddNote from './AddNote'
-
+import './ccss/notes.css';
 import NoteItem from './Noteitem';
 const Notes = (props) => {
 
@@ -112,7 +112,7 @@ const Notes = (props) => {
 
       <div className='row my-3'>
         <h2>Your  notes</h2>
-        <div className="container mx-2 d-flex"> 
+        <div className="container mx-2 d-flex" > 
                  {notes.length===0 && 'No notes to display'}
         
         {notes.map((note) => {
