@@ -12,6 +12,7 @@ const Notes = (props) => {
 
   const context = useContext(noteContext);
   let navigate = useNavigate();
+  //below are the various functions which are used from context
   const { notes, getNotes,editNote } = context;
   //updateNote will run when we click the updateNote icon and out form value will be set as currntnote (hrere currentnote is original note which is passed as prop from noteItem )
 
@@ -20,14 +21,14 @@ const Notes = (props) => {
     //  as it is called from the edit button click it will causes ref button to run modal 
     //here currentNote._id is used as _id is given automatically
     setNote({id:currentNote._id, etitle: currentNote.title, edescription: currentNote.description, etag: currentNote.tag });
-    ref.current.click();
+    ref.current.click();//this will open modal
    
   }
-  useEffect(() => {
+  useEffect(() => {//this useeffect is called during component rendering
     console.log(localStorage.getItem('token'));
     if(localStorage.getItem('token') )
     {
-      getNotes();
+      getNotes();//if the user is just signed in then setnotes will be storing empty
 
     }
     else{
@@ -45,10 +46,11 @@ const Notes = (props) => {
 
 
 
-
-  const handleClick = (e) => {
+//this e in function parameter contains all the information
+  const handleClick = (e) => {//this function is called when update note button is clicked not icon...
     console.log("Updating the note...", note);
-    editNote(note.id,note.etitle,note.edescription,note.etag);
+    //this node is already added to mongodb database hence it has id
+    editNote(note.id,note.etitle,note.edescription,note.etag);//this function used from context
     e.preventDefault();
     refclose.current.click();
     props.showAlert("note is updated successfully","success");//this message and type is passed to the the app.js

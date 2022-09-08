@@ -1,5 +1,5 @@
 const express = require('express');
-const User = require('../models/User');
+const User = require('../models/User');//imported user to find the same user is present in database or not...
 const router = express.Router();
 const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
@@ -14,7 +14,7 @@ router.post('/createuser', [
     body('email', 'Enter a valid email').isEmail(),
     body('password', 'Password must be atleast 5 characters').isLength({ min: 5 }),
 ], async (req, res) => {
-
+//here req and res is used for taking the parameters from the body and res is used to pass the parameters to the body
     let success = false;
     // If there are errors, return bad request and the errors
     const errors = validationResult(req);
@@ -29,12 +29,19 @@ router.post('/createuser', [
             return res.status(400).json({success, error: "Sorry a user with this email already exists!" })
         }
         const salt = await bcrypt.genSalt(10);
-        const secPass = await bcrypt.hash(req.body.password, salt);
+        const secPass = await bcrypt.hash(req.body.password, salt);//hashing out original password with salt
+        
+
+        //mongodb call for creating in database...
         user = await User.create({
             name: req.body.name,
-            password: secPass,
+            password: secPass,//here we have stored hashed password..
             email: req.body.email,
         });
+
+
+        //for creating authtoken using the id of the user hence we can verify user...
+        //authtoken is mixture of jwt secret key and user id  of just created user not from fetchuser middleware
         const data = {
             user: {
                 id: user.id
@@ -64,6 +71,7 @@ router.post('/login', [
         return res.status(400).json({ errors: errors.array() });
     }
 
+    //destructuring of body
     const { email, password } = req.body;
     try {
         let user = await User.findOne({ email: email })
@@ -71,7 +79,7 @@ router.post('/login', [
             success = false
             return res.status(400).json({ success, error: "Please try to login with correct credentials" })
         }
-
+//this bcrypt.compare function compare 
         const passwordCompare = await bcrypt.compare(password, user.password)
         if (!passwordCompare) {
             success = false
@@ -80,10 +88,11 @@ router.post('/login', [
 
         const data = {
             user: {
+                //this user is taken from finding user from database and in sign in user is taken from creating user...
                 id: user.id
             }
         }
-        const authToken = jwt.sign(data, JWT_SECRET)
+        const authToken = jwt.sign(data, JWT_SECRET)//this auth token and auth token created during user creation is same
         success = true
         res.json({ success, authToken })
 
@@ -98,6 +107,7 @@ router.post('/login', [
 // ROUTE 3: Get loggedin User Details using: POST "/api/auth/getuser". Login required
 router.post('/getuser', fetchuser, async (req, res) => {
     try {
+        //to use id from fetchuser we have to use req.user.id
         userId = req.user.id;
         const user = await User.findById(userId).select("-password")
         res.send(user)

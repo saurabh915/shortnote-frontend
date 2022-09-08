@@ -34,13 +34,13 @@ const getNotes = async () => {
     method: 'GET',
     headers: {
       "Content-Type": "application/json",
-      'auth-token': localStorage.getItem('token')
+      'auth-token': localStorage.getItem('token')//we have to logged in or signed up while calling this api
     }
   });
   const json = await response.json();
 console.log("fetching all notes");
 console.log(json);
-setNotes(json);
+setNotes(json);//here all the notes will be in the form of json string this is happening in notes file as it is context which is imported
 
 
 //this will give all notes
@@ -107,6 +107,7 @@ console.log(json);
 
 
     //the below command will return all the notes exept the notes which have _id == id of note which we have to  delete
+    
     const newNotes = notes.filter((note) => { return note._id !== id });
     setNotes(newNotes);
   }

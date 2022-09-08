@@ -12,6 +12,7 @@ import Signup from './components/Signup';
 
 function App() {
   const [alert, setAlert] = useState(null);
+  //this showalert function is passed as prop
   const showAlert = (message, type)=>{
     setAlert({
       msg: message,

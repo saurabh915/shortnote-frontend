@@ -27,7 +27,7 @@ console.log(json);
 if(json.success)
 {
   props.showAlert("you logged in","success");
-    //save the authtoken and redirect user to his notes
+    //save the authtoken and redirect user to his notes so that we can fetch the notes acording to token
     localStorage.setItem('token',json.authToken);
     navigate("/");
 }
@@ -42,7 +42,7 @@ else{
     
   return (
     <div className='container'>
-         <h2 className='header'>PLEASE ENTER YOUR LOGIN DETAILS</h2>
+         <h2 className='header'> LOGIN FORM</h2>
        <form onSubmit={handleSubmit} >
 
 <div className="mb-3 row">

@@ -49,7 +49,7 @@ console.log(json.authToken);
   return (
 
     <div className="container">
-      <h2 className='header'>PLEASE ENTER YOUR SIGNUP DETAILS</h2>
+      <h2 className='header'> SIGNUP FORM</h2>
         <form onSubmit={handleSubmit} >
         <div className="mb-3 row">
 <label htmlFor='text' className="col-sm-2 col-form-label">Name</label>
@@ -68,7 +68,7 @@ console.log(json.authToken);
 <div className="mb-3 row">
 <label htmlFor="Password" className="col-sm-2 col-form-label">Password</label>
 <div className="col-sm-10">
-<input type="password" className="form-control" id="Password"  name = "password"  value={credentials.password}onChange={onChange}  />
+<input type="password" className="form-control" id="Password"  name = "password"  value={credentials.password} onChange={onChange}  />
 </div>
 </div>
 <div className="mb-3 row">

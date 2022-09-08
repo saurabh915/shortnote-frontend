@@ -5,11 +5,12 @@
     left: 99px;
 }
 .container {
-    font-size: 19px;
+    box-shadow: 20px 15px 19px;
+    font-size: 25px;
     border: 2px solid hsl(250deg 100% 32%);
     height: auto;
     width: 650px;
-    border-radius: 20px;
+    border-radius: 0px;
     background-color: #deb88729;
     padding: 30px;
 }
