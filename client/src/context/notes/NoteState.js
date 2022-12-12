@@ -9,7 +9,7 @@ const NoteState = (props) => {
   //     "name":"saurabh",
   //     "class":"sb"
   // }
-  const host = "https://inotepage.herokuapp.com"
+  const host = "https://shortnote.onrender.com"
 
   const notesinitial = [
     
