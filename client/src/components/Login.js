@@ -10,7 +10,7 @@ const Login = (props) => {
         e.preventDefault();
   
             // TODO: API Call which is created in backend 
-            const response = await fetch(`https://shortnote.onrender.com/api/auth/login`, {
+            const response = await fetch(`https://shortnotes.onrender.com/api/auth/login`, {
               method: 'POST',
               headers: {
                 "Content-Type": "application/json",
