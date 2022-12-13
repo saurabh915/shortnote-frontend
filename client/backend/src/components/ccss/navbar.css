@@ -1,0 +1,8 @@
+.container-fluid {
+    display: flex;
+    list-style: none;
+    padding: 10px;
+}
+.button2{
+    margin-left: 3px;
+}
