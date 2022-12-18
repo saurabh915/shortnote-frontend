@@ -10,6 +10,7 @@ import './ccss/notes.css';
 import NoteItem from './Noteitem';
 const Notes = (props) => {
 
+  //this is the way to get the functions which are kept in context
   const context = useContext(noteContext);
   let navigate = useNavigate();
   //below are the various functions which are used from context

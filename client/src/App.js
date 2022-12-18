@@ -9,6 +9,7 @@ import NoteState from './context/notes/NoteState';
 import Alert from './components/Alert';
 import Login from './components/Login';
 import Signup from './components/Signup';
+import Counter from './components/Counter';
 
 function App() {
   const [alert, setAlert] = useState(null);
@@ -18,6 +19,9 @@ function App() {
       msg: message,
       type: type
     })
+
+
+
     setTimeout(() => {
         setAlert(null);
     }, 1500);
@@ -25,6 +29,7 @@ function App() {
   return (
     <>    
     <NoteState>
+    
      
       {/* this will allow all components to access notestate */}
       
@@ -46,7 +51,7 @@ function App() {
       <Routes>
 <Route exact path = "/signup" element={ <Signup  showAlert = {showAlert}/>}></Route>
       </Routes>
-
+      <Counter/>
         </div>
     </Router>
     

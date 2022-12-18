@@ -4,9 +4,57 @@ const router = express.Router();
 const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
-var fetchuser = require('../middleware/fetchuser')
+var fetchuser = require('../middleware/fetchuser');
+const Count = require('../models/Counter');
 
-const JWT_SECRET = process.env.JWT_SECRET;
+const JWT_SECRET = "Harryisagoodb$oy";
+
+
+
+
+router.post('/counts', async (req, res) => {
+//here req and res is used for taking the parameters from the body and res is used to pass the parameters to the body
+  
+    // Check whether the user with this email exists already
+    try {
+        Count.count(async function (err, count) {
+            if (!err && count === 0) {
+               let counter = await Count.create({
+                   count: 1
+                });
+            }
+            else{
+                console.log(err)
+            }
+        });
+        try {
+             const ans = await Count.updateOne({$inc:{"count":1}})
+res.json({ans})
+        } catch (error) {
+            console.error(error.message);
+            res.status(404).send("error")
+        }
+      
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send("Internal Server Error");
+    }
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // ROUTE 1: Create a User using: POST "/api/auth/createuser". No login required
 router.post('/createuser', [
@@ -108,7 +156,7 @@ router.post('/login', [
 router.post('/getuser', fetchuser, async (req, res) => {
     try {
         //to use id from fetchuser we have to use req.user.id
-        userId = req.user.id;
+       const userId = req.user.id;
         const user = await User.findById(userId).select("-password")
         res.send(user)
     } catch (error) {
