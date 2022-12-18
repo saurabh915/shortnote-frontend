@@ -3,7 +3,7 @@ const  loaded =async(e)=>{
     e.preventDefault();
   console.log("onoaded called")
     // TODO: API Call which is created in backend 
-    const response = await fetch(`http://localhost:5000/api/auth/counts`, {
+    const response = await fetch(`https://shortnote.onrender.com/api/auth/counts`, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",
