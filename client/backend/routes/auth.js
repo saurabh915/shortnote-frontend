@@ -12,7 +12,7 @@ const JWT_SECRET = "Harryisagoodb$oy";
 
 
 
-router.post('/counts', async (req, res) => {
+router.get('/counts', async (req, res) => {
 //here req and res is used for taking the parameters from the body and res is used to pass the parameters to the body
   
     // Check whether the user with this email exists already
